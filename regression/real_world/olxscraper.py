@@ -20,7 +20,7 @@ LISTS_FOLDER = f"{SAVING_FOLDER}/lists"
 
 
 class OLXscrapper:
-    def __init__(self, max_lists:100) -> None:
+    def __init__(self, max_lists=100) -> None:
         self.buffer = []
         self.data = []
         self.max_lists = max_lists
@@ -93,7 +93,7 @@ class OLXscrapper:
                 "isFeatured": obj.get("isFeatured"),
                 "neighbourhood": obj.get("locationDetails",{}).get("neighbourhood"),
                 "date": obj.get("date"),
-                "category": obj.get("catetory"),
+                "category": obj.get("category"),
             }
             for prop in properties:
                 if prop['name'] in properties_to_extract:
