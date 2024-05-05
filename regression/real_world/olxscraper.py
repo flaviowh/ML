@@ -20,7 +20,7 @@ LISTS_FOLDER = f"{SAVING_FOLDER}/lists"
 
 
 class OLXscrapper:
-    def __init__(self, max_lists:200) -> None:
+    def __init__(self, max_lists:100) -> None:
         self.buffer = []
         self.data = []
         self.max_lists = max_lists
@@ -87,7 +87,7 @@ class OLXscrapper:
             properties = obj.get("properties")
             entry = {
                 "id": obj.get("listId"),
-                "price": float(re.sub(r'[^\d]', '', obj.get("price", "0"))),
+                "price": obj.get("price", "0"),
                 "professionalAd": obj.get("professionalAd"),
                 "description": obj.get('images', [{}])[0].get('originalAlt', ''),
                 "isFeatured": obj.get("isFeatured"),
@@ -117,5 +117,5 @@ class OLXscrapper:
 
 
 if __name__ == "__main__":
-    scrapper = OLXscrapper(200)
+    scrapper = OLXscrapper()
     scrapper.run()
