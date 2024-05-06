@@ -92,6 +92,7 @@ class OLXscrapper:
                 "description": obj.get('images', [{}])[0].get('originalAlt', ''),
                 "isFeatured": obj.get("isFeatured"),
                 "neighbourhood": obj.get("locationDetails",{}).get("neighbourhood"),
+                "city": obj.get("locationDetails",{}).get("municipality"),
                 "date": obj.get("date"),
                 "category": obj.get("category"),
             }
@@ -114,6 +115,7 @@ class OLXscrapper:
             writer.writeheader()
             for obj in objects:
                 writer.writerow(obj)
+        print("csv created successfully")
 
 
 if __name__ == "__main__":
